@@ -14,19 +14,35 @@
     </button>
 
     <!-- メニュー（PC用） -->
-    <div class="hidden md:flex space-x-6 items-center">
-        <%= link_to '掲示板作成', '#', class: 'text-gray-700 hover:text-blue-600 font-medium' %>
+    <div class="hidden md:flex justify-end items-center space-x-6" id="navbarSupportedContent">
+      <ul class="flex items-center space-x-6">
+        <!-- Board Dropdown -->
+        <li class="relative group">
+          <%= link_to t('header.board'), '#', class: 'text-gray-700 hover:text-blue-600 focus:outline-none', id: 'header-board-menu' %>
+          <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 invisible group-hover:visible z-50">
+            <%= link_to t('header.board_index'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
+            <%= link_to t('header.create_board'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
+          </div>
+        </li>
 
-      <div class="relative group">
-        <%= link_to '#', class: 'nav-link', data: { bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' }, id: 'header-profile' do %>
-            <%= image_tag 'わんスマイル.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
-        <% end %>
-        <div class="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 w-48 right-0 z-10">
-          <div class="px-4 py-2 text-sm text-gray-800">ユーザーネーム</div>
-          <hr class="border-gray-200">
-          <%= link_to 'プロフィール', '#', class: 'block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700' %>
-          <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>        </div>
-      </div>
+        <li>
+          <%= link_to t('header.bookmark_index'), '#', class: 'text-gray-700 hover:text-blue-600' %>
+        </li>
+
+        <!-- Profile  -->
+        <li class="relative group">
+          <%= link_to '#', class: 'flex items-center focus:outline-none', id: 'header-profile' do %>
+            <%= image_tag 'わんスマイル.png', class: 'rounded-full w-10 h-10 mr-2' %>
+          <% end %>
+          <div class="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 invisible group-hover:visible z-50">
+            <div class="px-4 py-2 text-gray-900">ユーザーネーム</div>
+            <div class="border-t border-gray-100 my-1"></div>
+            <%= link_to t('header.profile'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
+            <%= link_to t('header.logout'), logout_path, class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100', data: { turbo_method: :delete } %>
+          </div>
+        </li>
+
+      </ul>
     </div>
   </nav>
 </header>
