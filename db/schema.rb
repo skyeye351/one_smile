@@ -1,4 +1,4 @@
-ActiveRecord::Schema[7.2].define(version: 2025_04_16_061750) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_23_014652) do
   enable_extension "plpgsql"
 
   create_table "boards", force: :cascade do |t|
