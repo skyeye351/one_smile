@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :last_name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true
+
+  # has_many :boardsは、ユーザーが複数のBoardレコードを持つことを示しています。
+  # dependent: :destroyは、ユーザーが削除されたとき、関連するBoardレコードも一緒に削除される
+  has_many :boards, dependent: :destroy
 end
