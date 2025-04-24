@@ -49,3 +49,5 @@ gem "tailwindcss-ruby", "3.4.17"
 gem "sorcery"
 
 gem "rails-i18n"
+
+gem 'draper'

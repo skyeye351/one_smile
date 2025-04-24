@@ -5,7 +5,6 @@ Bundler.require(*Rails.groups)
 module Myapp
   class Application < Rails::Application
     config.load_defaults 7.2
-
     config.eager_load_paths << Rails.root.join("lib")
 
     config.generators do |g|
