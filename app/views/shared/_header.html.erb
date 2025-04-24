@@ -17,17 +17,9 @@
     <div class="hidden md:flex justify-end items-center space-x-6" id="navbarSupportedContent">
       <ul class="flex items-center space-x-6">
         <!-- Board Dropdown -->
-        <li class="relative group">
-          <%= link_to t('header.board'), '#', class: 'text-gray-700 hover:text-blue-600 focus:outline-none', id: 'header-board-menu' %>
-          <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 invisible group-hover:visible z-50">
-            <%= link_to t('header.board_index'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
-            <%= link_to t('header.create_board'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
-          </div>
-        </li>
-
-        <li>
-          <%= link_to t('header.bookmark_index'), '#', class: 'text-gray-700 hover:text-blue-600' %>
-        </li>
+        <div class="relative group">
+        <%= link_to t('header.create_board'), new_board_path, class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
+        </div>
 
         <!-- Profile  -->
         <li class="relative group">
