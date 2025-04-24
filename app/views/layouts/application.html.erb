@@ -21,10 +21,11 @@
       <%= render "shared/before_login_header" %>
     <% end %>
 
+    <!-- フラッシュメッセージが表示されるように設定 -->
+    <%= render "shared/flash_message" %>
+
     <!-- メインコンテンツ -->
-    <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
-    </main>
 
     <!-- フッター -->
     <%= render "shared/footer" %>
