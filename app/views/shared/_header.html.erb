@@ -35,13 +35,12 @@
             <%= image_tag 'わんスマイル.png', class: 'rounded-full w-10 h-10 mr-2' %>
           <% end %>
           <div class="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 invisible group-hover:visible z-50">
-            <div class="px-4 py-2 text-gray-900">ユーザーネーム</div>
+            <div class="px-4 py-2 text-gray-900"><%= current_user.decorate.full_name %></div>
             <div class="border-t border-gray-100 my-1"></div>
             <%= link_to t('header.profile'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
             <%= link_to t('header.logout'), logout_path, class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100', data: { turbo_method: :delete } %>
           </div>
         </li>
-
       </ul>
     </div>
   </nav>
