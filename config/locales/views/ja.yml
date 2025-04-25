@@ -7,6 +7,11 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  header:
+    login: ログイン
+    logout: ログアウト
+    create_board: 掲示板作成
+    profile: プロフィール
   user_sessions:
     new:
       title: ログイン
@@ -31,8 +36,3 @@ ja:
     create:
       success: 掲示板作成が完了しました
       failure: 掲示板作成に失敗しました
-  header:
-    login: ログイン
-    logout: ログアウト
-    create_board: 掲示板作成
-    profile: プロフィール

@@ -51,3 +51,5 @@ gem "sorcery"
 gem "rails-i18n"
 
 gem "draper"
+
+gem "carrierwave"
