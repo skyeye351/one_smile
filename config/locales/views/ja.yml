@@ -28,6 +28,9 @@ ja:
   boards:
     new:
       title: 掲示板作成
+    create:
+      success: 掲示板作成が完了しました
+      failure: 掲示板作成に失敗しました
   header:
     login: ログイン
     logout: ログアウト
