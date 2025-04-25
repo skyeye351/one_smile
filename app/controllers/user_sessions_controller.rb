@@ -9,14 +9,14 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to root_path, success: t(".success")
     else
-      flash.now[:danger] = t(".failure")
+      flash.now[:error] = t(".failure")
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    flash[:danger] = t(".success")
+    flash[:error] = t(".success")
     redirect_to root_path, status: :see_other
   end
 end

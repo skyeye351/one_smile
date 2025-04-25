@@ -13,6 +13,11 @@
           <%= f.label :body, class: "block text-gray-700 font-semibold mb-2" %>
           <%= f.text_area :body, rows: 10, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
         </div>
+        <div class="mb-3">
+          <%= f.label :board_image %>
+          <%= f.file_field :board_image, class: "form-control", accept: 'image/*' %>
+          <%= f.hidden_field :board_image_cache %>
+        </div>
         <%= f.submit nil, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300" %>
       <% end %>
     </div>
