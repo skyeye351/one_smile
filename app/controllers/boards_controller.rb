@@ -11,6 +11,7 @@ class BoardsController < ApplicationController
 
     def create
         @board = current_user.boards.build(board_params)
+        binding.pry
         if @board.save
         redirect_to boards_path, success: t("defaults.flash_message.created", item: Board.model_name.human)
         else
