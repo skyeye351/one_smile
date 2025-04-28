@@ -7,6 +7,12 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  defaults:
+    post: 投稿
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      require_login: ログインしてください
   header:
     login: ログイン
     logout: ログアウト
@@ -32,9 +38,3 @@ ja:
       title: 掲示板作成
     show:
       title: 掲示板詳細
-  defaults:
-    post: 投稿
-    flash_message:
-      created: "%{item}を作成しました"
-      not_created: "%{item}を作成出来ませんでした"
-      require_login: ログインしてください
