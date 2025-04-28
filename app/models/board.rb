@@ -4,7 +4,7 @@ class Board < ApplicationRecord
 
     # BoardモデルのレコードをUserモデルのレコードと関連付ける
     belongs_to :user
-
+    has_many :comments, dependent: :destroy
     # 画像のアップロードや取得が簡単にできる設定
     mount_uploader :board_image, BoardImageUploader
 end

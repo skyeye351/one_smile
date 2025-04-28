@@ -12,11 +12,17 @@ class BoardsController < ApplicationController
     def create
         @board = current_user.boards.build(board_params)
         if @board.save
-        redirect_to boards_path, success: t(".success")
+        redirect_to boards_path, success: t("defaults.flash_message.created", item: Board.model_name.human)
         else
-        flash.now[:danger] = t(".failure")
+        flash.now[:error] = t("defaults.flash_message.not_created", item: Board.model_name.human)
         render :new, status: :unprocessable_entity
         end
+    end
+
+    def show
+        @board = Board.find(params[:id])
+        @comment = Comment.new
+        @comments = @board.comments.includes(:user).order(created_at: :desc)
     end
 
     private

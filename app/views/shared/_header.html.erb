@@ -24,7 +24,7 @@
         <!-- Profile  -->
         <li class="relative group">
           <%= link_to '#', class: 'flex items-center focus:outline-none', id: 'header-profile' do %>
-            <%= image_tag 'わんスマイル.png', class: 'rounded-full w-10 h-10 mr-2' %>
+            <%= image_tag 'one_smile.png', width: "50", height: "50", class: "rounded-full" %>
           <% end %>
           <div class="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 invisible group-hover:visible z-50">
             <div class="px-4 py-2 text-gray-900"><%= current_user.decorate.full_name %></div>
