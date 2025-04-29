@@ -1,23 +1,28 @@
-<div class="container mx-auto pt-3 px-4">
-  <div class="flex justify-center">
-    <div class="w-full lg:w-10/12">
-      <!-- 検索フォーム -->
+<div class="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8 px-4">
+  <div class="max-w-6xl mx-auto">
+    <!-- 検索フォーム -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
       <form>
-        <div class="flex items-center space-x-2 mb-3">
-          <input type="search" placeholder="検索ワード"
-                 class="flex-grow border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <input type="submit" value="検索"
-                 class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer" />
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <input 
+            type="search" 
+            placeholder="検索ワードを入力..." 
+            class="w-full flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+          <input 
+            type="submit" 
+            value="検索" 
+            class="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition cursor-pointer"
+          />
         </div>
       </form>
     </div>
-  </div>
 
-  <!-- 掲示板一覧 -->
-  <div class="mt-4">
-    <!-- @boardsに値が存在するかどうかを確認 -->
-    <% if @boards.present? %>
-        <%= render @boards %>
-    <% end %>
+    <!-- 掲示板一覧 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @boards.each do |board| %>
+        <%= render board %>
+      <% end %>
+    </div>
   </div>
 </div>

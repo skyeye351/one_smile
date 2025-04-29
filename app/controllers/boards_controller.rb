@@ -11,7 +11,6 @@ class BoardsController < ApplicationController
 
     def create
         @board = current_user.boards.build(board_params)
-        binding.pry
         if @board.save
         redirect_to boards_path, success: t("defaults.flash_message.created", item: Board.model_name.human)
         else
@@ -21,9 +20,31 @@ class BoardsController < ApplicationController
     end
 
     def show
+        # 全てのユーザーが詳細画面にアクセスできる
         @board = Board.find(params[:id])
         @comment = Comment.new
         @comments = @board.comments.includes(:user).order(created_at: :desc)
+    end
+
+    def edit
+        # ログインしたユーザーのみ編集できる
+        @board = current_user.boards.find(params[:id])
+    end
+
+    def update
+        @board = current_user.boards.find(params[:id])
+        if @board.update(board_params)
+            redirect_to board_path(@board), success: t('defaults.flash_message.updated', item: Board.model_name.human)
+        else
+            flash.now[:danger] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+    board = current_user.boards.find(params[:id])
+    board.destroy!
+    redirect_to boards_path, success: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
     end
 
     private

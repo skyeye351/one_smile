@@ -22,6 +22,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # デバッグ・診断
+  gem "pry-byebug"
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
   gem "brakeman", require: false
 
