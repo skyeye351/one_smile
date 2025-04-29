@@ -1,0 +1,23 @@
+<%= form_with model: @board, class: "space-y-6" do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div>
+    <%= f.label :title, class: "block text-gray-700 font-semibold mb-2" %>
+    <%= f.text_field :title, class: "w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent p-3" %>
+    </div>
+
+    <div>
+    <%= f.label :body, class: "block text-gray-700 font-semibold mb-2" %>
+    <%= f.text_area :body, rows: 10, class: "w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent p-3" %>
+    </div>
+
+    <div>
+    <%= f.label :board_image, class: "block text-gray-700 font-semibold mb-2" %>
+    <%= f.file_field :board_image, accept: 'image/*', class: "w-full text-gray-700 p-2 border border-gray-300 rounded-lg" %>
+    <%= f.hidden_field :board_image_cache %>
+    </div>
+
+    <div>
+    <%= f.submit t('.submit', default: "保存"), class: "w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all duration-300" %>
+    </div>
+<% end %>
