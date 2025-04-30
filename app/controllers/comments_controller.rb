@@ -1,13 +1,20 @@
 class CommentsController < ApplicationController
   def create
-    comment = current_user.comments.build(comment_params)
-    if comment.save
-      # => "コメントを作成しました"
-      redirect_to board_path(comment.board), success: t("defaults.flash_message.created", item: Comment.model_name.human)
-    else
-      # => "コメントを作成できませんでした"
-      redirect_to board_path(comment.board), error: t("defaults.flash_message.not_created", item: Comment.model_name.human)
-    end
+    @comment = current_user.comments.build(comment_params)
+    @comment.save
+  end
+
+  def edit
+    @comment = current_user.comments.find(params[:id])
+  end
+
+  def update
+    @comment = current_user.comments.find(params[:id])
+  end
+
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy!
   end
 
   private

@@ -36,7 +36,7 @@ class BoardsController < ApplicationController
         if @board.update(board_params)
             redirect_to board_path(@board), success: t('defaults.flash_message.updated', item: Board.model_name.human)
         else
-            flash.now[:danger] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
+            flash.now[:error] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
             render :edit, status: :unprocessable_entity
         end
     end
