@@ -1,33 +1,27 @@
 <header class="bg-white shadow">
   <nav class="container mx-auto flex items-center justify-between px-4 py-3">
-    <%= link_to root_path, class: 'flex flex-col items-center justify-center text-center' do %>
-        <span class="text-xl font-bold text-gray-800">わんスマイル</span>
-        <span class="text-sm text-gray-500">ONE SMILE</span>
+    <!-- ロゴ -->
+    <%= link_to "/", class: 'flex flex-col items-center justify-center text-center' do %>
+      <span class="text-xl font-bold text-gray-800">わんスマイル</span>
+      <span class="text-sm text-gray-500">ONE SMILE</span>
     <% end %>
-
-    <!-- ハンバーガーメニュー（モバイル用） -->
-    <button class="md:hidden text-gray-500 focus:outline-none" @click="open = !open" aria-label="Toggle menu">
-      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"/>
+    <!-- ハンバーガーメニュー -->
+    <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-600 border-gray-400 hover:text-gray-800 hover:border-gray-600">
+      <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+        <path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z" />
       </svg>
     </button>
-
     <!-- メニュー（PC用） -->
-    <div class="hidden md:flex justify-end items-center space-x-6" id="navbarSupportedContent">
-      <ul class="flex items-center space-x-6">
-        <!-- Board Dropdown -->
-        <div class="relative group">
-        <%= link_to t('header.create_board'), new_board_path, class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
-        </div>
-
-        <!-- Profile  -->
-        <li class="relative group">
-          <%= link_to '#', class: 'flex items-center focus:outline-none', id: 'header-profile' do %>
-            <%= image_tag 'one_smile.png', width: "50", height: "50", class: "rounded-full" %>
-          <% end %>
-          <div class="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 invisible group-hover:visible z-50">
-            <div class="px-4 py-2 text-gray-900"><%= current_user.decorate.full_name %></div>
+    <div id="nav-menu" class="hidden md:flex flex-col md:flex-row absolute md:static top-16 right-4 md:top-auto md:right-auto bg-white md:bg-transparent shadow md:shadow-none rounded md:rounded-none p-4 md:p-0 space-y-4 md:space-y-0 md:space-x-6 z-50">
+      <ul class="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
+        <li>
+          <%= link_to t('header.create_board'), new_board_path, class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
+        </li>
+        <!-- プロフィール -->
+        <li class="relative">
+          <%= image_tag 'one_smile.png', width: "50", height: "50", id: "profile-toggle", class: "rounded-full cursor-pointer" %>
+          <div id="profile-menu" class="hidden absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg z-50">
+            <div class="px-4 py-2 text-gray-900 font-semibold"><%= current_user.decorate.full_name %></div>
             <div class="border-t border-gray-100 my-1"></div>
             <%= link_to t('header.profile'), '#', class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100' %>
             <%= link_to t('header.logout'), logout_path, class: 'block px-4 py-2 text-gray-700 hover:bg-gray-100', data: { turbo_method: :delete } %>

@@ -22,7 +22,7 @@ ja:
     login: ログイン
     logout: ログアウト
     create_board: 掲示板作成
-    profile: プロフィール
+    profile: 犬のプロフィール
   user_sessions:
     new:
       title: ログイン
