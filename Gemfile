@@ -54,3 +54,6 @@ gem "rails-i18n"
 gem "draper"
 
 gem "carrierwave"
+
+gem "slim-rails"
+gem "html2slim"
