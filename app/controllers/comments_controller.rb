@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
-    @comment.save
+    if @comment.save
+      redirect_to board_path(@comment.board), success: t("defaults.flash_message.comment", item: Comment.model_name.human)
+    else
+      flash[:error] = t("defaults.flash_message.not_comment", item: Comment.model_name.human)
+      redirect_to board_path(@comment.board)
+    end
   end
 
   def edit

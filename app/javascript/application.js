@@ -10,7 +10,6 @@ document.addEventListener("turbo:load", () => {
     navToggle.addEventListener("click", () => {
       navMenu.classList.toggle("hidden");
     });
-  } else {
   }
 
   // プロフィールメニュー（クリックで開閉）

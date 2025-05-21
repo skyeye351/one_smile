@@ -12,22 +12,20 @@ class BoardsController < ApplicationController
     def create
         @board = current_user.boards.build(board_params)
         if @board.save
-        redirect_to boards_path, success: t("defaults.flash_message.created", item: Board.model_name.human)
+            redirect_to boards_path, success: t("defaults.flash_message.created", item: Board.model_name.human)
         else
-        flash.now[:error] = t("defaults.flash_message.not_created", item: Board.model_name.human)
-        render :new, status: :unprocessable_entity
+            flash.now[:error] = t("defaults.flash_message.not_created", item: Board.model_name.human)
+            render :new, status: :unprocessable_entity
         end
     end
 
     def show
-        # 全てのユーザーが詳細画面にアクセスできる
         @board = Board.find(params[:id])
-        @comment = Comment.new
+        @comment = Comment.new(board: @board)
         @comments = @board.comments.includes(:user).order(created_at: :desc)
     end
 
     def edit
-        # ログインしたユーザーのみ編集できる
         @board = current_user.boards.find(params[:id])
     end
 

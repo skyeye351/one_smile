@@ -18,6 +18,8 @@ ja:
       not_updated: "%{item}を更新出来ませんでした"
       deleted: "%{item}を削除しました"
       require_login: ログインしてください
+      comment: "%{item}を入力しました"
+      not_comment: "%{item}を入力してください"
   header:
     login: ログイン
     logout: ログアウト
