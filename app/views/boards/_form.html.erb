@@ -1,4 +1,4 @@
-<%= form_with model: @board, class: "space-y-6" do |f| %>
+<%= form_with model: @board, method: :post, html: { multipart: true }, class: "space-y-6" do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div>
@@ -11,13 +11,19 @@
     <%= f.text_area :body, rows: 10, class: "w-full border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent p-3" %>
     </div>
 
-    <div>
-    <%= f.label :board_image, class: "block text-gray-700 font-semibold mb-2" %>
-    <%= f.file_field :board_image, accept: 'image/*', class: "w-full text-gray-700 p-2 border border-gray-300 rounded-lg" %>
-    <%= f.hidden_field :board_image_cache %>
-    </div>
+      <!-- アバター画像 -->
+      <div>
+      <%= f.label :board_image, class: "block text-gray-700 font-semibold mb-2" %>
+      <%= f.file_field :board_image, accept: 'image/*', class: "block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700" %>
+      <%= f.hidden_field :board_image_cache %>
+      </div>
+
+      <!-- プレビュー表示 -->
+      <div>
+      <%= image_tag @board.board_image.url, id: 'preview', class: 'rounded-full w-24 h-24 object-cover mx-auto shadow' %>
+      </div>
 
     <div>
-    <%= f.submit t('.submit', default: "保存"), class: "w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all duration-300" %>
+    <%= f.submit t('.submit', default: "保存"), class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-300" %>
     </div>
 <% end %>

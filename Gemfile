@@ -53,6 +53,7 @@ gem "rails-i18n"
 
 gem "draper"
 
+# ファイルアップローダー機能
 gem "carrierwave"
 
 gem "slim-rails"

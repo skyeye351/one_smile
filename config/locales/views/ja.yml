@@ -10,6 +10,9 @@ ja:
   defaults:
     create: 作成
     post: 投稿
+    search_word: 検索ワード
+    edit: 編集
+    update: 更新
     delete_confirm: 削除しますか？
     flash_message:
       created: "%{item}を作成しました"
@@ -24,7 +27,13 @@ ja:
     login: ログイン
     logout: ログアウト
     create_board: 掲示板作成
-    profile: 犬のプロフィール
+    profile: プロフィール
+  profiles:
+    show:
+      title: プロフィール
+    edit:
+      title: プロフィール編集
+      to_login_page: ログインページへ
   user_sessions:
     new:
       title: ログイン

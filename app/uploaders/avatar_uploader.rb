@@ -1,4 +1,4 @@
-class BoardImageUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
@@ -7,7 +7,7 @@ class BoardImageUploader < CarrierWave::Uploader::Base
 
   # アップロードされていない場合のデフォルト画像
   def default_url
-    "/board_placeholder.png"
+    "/sample.jpg"
   end
 
   # セキュリティ対策：不正なファイルのアップロードを防ぐ
