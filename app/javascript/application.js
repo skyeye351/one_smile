@@ -1,5 +1,5 @@
-import "@hotwired/turbo-rails"
-import "./controllers"
+import "@hotwired/turbo-rails";
+import "./controllers";
 
 document.addEventListener("turbo:load", () => {
   // ハンバーガーメニュー
