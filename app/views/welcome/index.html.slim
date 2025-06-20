@@ -1,0 +1,47 @@
+section.bg-gray-50.min-h-screen.py-12.px-4.sm:px-6.lg:px-8
+  .max-w-3xl.mx-auto.bg-white.shadow-xl.rounded-2xl.p-8
+    h1.text-3xl.font-extrabold.text-gray-900.mb-6.text-center はじめての方へ
+
+    p.text-gray-700.text-lg.mb-10.text-center
+      | このアプリは、ペットと飼い主さんの交流を目的としたSNSです。
+      br
+      | 以下の手順で、あなたもすぐに使い始められます！
+
+    .space-y-8
+      - steps = [{ title: 'STEP 1. アカウントを作成', desc: 'メールアドレスとパスワードで簡単に登録できます。ログイン後はプロフィールを編集しましょう。' }, { title: 'STEP 2. ペット情報を登録', desc: 'あなたのペットの名前や写真、性格などを入力して、他の飼い主に紹介しましょう。' }, { title: 'STEP 3. 投稿してみよう', desc: '日々の出来事や写真を投稿できます。他のユーザーの投稿にもコメントや「いいね」ができます。' }, { title: 'STEP 4. フォローでつながる', desc: '気になるユーザーをフォローして、タイムラインに最新の投稿を表示させましょう。' }]
+
+      - steps.each do |step|
+        .bg-blue-50.border-l-4.border-blue-400.p-6.rounded-lg.shadow-sm
+          h2.text-xl.font-semibold.text-blue-900.mb-2 = step[:title]
+          p.text-gray-800.text-base = step[:desc]
+
+    .mt-12.grid.grid-cols-1.md:grid-cols-2.gap-8
+        .p-6.bg-blue-50.rounded-lg.shadow-md.text-center
+            h3.text-xl.font-semibold.mb-2 アカウント作成へ進む
+            p.text-gray-700.mb-4 初めての方はアカウント登録後、投稿・コメントすることができます。
+            = link_to '登録', new_user_path, class: 'inline-block bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded'
+
+        .p-6.bg-green-50.rounded-lg.shadow-md.text-center
+            h3.text-xl.font-semibold.mb-2 みんなの投稿を見る
+            p.text-gray-700.mb-4 ログインせずに他のユーザーの投稿をチェックできます。
+            = link_to '投稿一覧へ', boards_path, class: 'inline-block bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded'
+
+section.bg-gray-50.py-12
+  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8
+    h2.text-3xl.font-extrabold.text-gray-900.mb-8.text-center 最近の投稿
+
+    .grid.grid-cols-1.sm:grid-cols-2.lg:grid-cols-3.gap-8
+      - @latest_boards.each do |board|
+        .bg-white.rounded-xl.shadow-lg.overflow-hidden.transition.transform.hover:-translate-y-1.hover:shadow-xl
+          = link_to board_path(board), class: "block h-full" do
+            - if board.board_image_url.present?
+              = image_tag board.board_image_url, class: "w-full h-48 object-cover", width: 400, height: 200
+            - else
+              = image_tag "no_image.png", class: "w-full h-48 object-cover", width: 400, height: 200
+
+            .p-6.flex.flex-col.h-full
+              h3.text-xl.font-semibold.text-gray-900.mb-2 = board.title.truncate(30)
+              p.text-gray-700.flex-grow.mb-4 = board.body.truncate(80)
+              .flex.items-center.justify-between.text-sm.text-gray-500.mt-4
+                span #{board.user.decorate.full_name rescue "不明"}
+                span = board.created_at.strftime("%Y/%m/%d")
