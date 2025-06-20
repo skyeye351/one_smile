@@ -9,12 +9,7 @@
           <%= link_to board.title, board_path(board), class: "hover:underline" %>
         </h4>
         <div class="flex space-x-2">
-          <%= link_to edit_board_path(board), id: "button-edit-#{board.id}", class: "text-blue-500 hover:text-blue-700 transition" do %>
-            <i class="bi bi-pencil-fill"></i>
-          <% end %>
-          <%= link_to board_path(board), id: "button-delete-#{board.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "text-red-500 hover:text-red-700 transition" do %>
-            <i class="bi bi-trash-fill"></i>
-          <% end %>
+          <!-- TODO: board.bodyを文字数指定して記載できるようにする -->
         </div>
       </div>
       <ul class="text-sm text-gray-500 space-y-1 mb-3">
