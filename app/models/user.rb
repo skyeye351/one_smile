@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  # mount_uploader :avatar, AvatarUploader
   has_one_attached :avatar # ActiveStorageを設定
 
 
