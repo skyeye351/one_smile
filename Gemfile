@@ -53,8 +53,9 @@ gem "rails-i18n"
 
 gem "draper"
 
-# ファイルアップローダー機能
-gem "carrierwave"
+# gem "carrierwave" # ファイルアップローダー機能
 
 gem "slim-rails"
 gem "html2slim"
+
+gem "cloudinary" # renderで画像保管
