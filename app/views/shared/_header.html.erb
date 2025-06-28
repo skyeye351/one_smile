@@ -21,7 +21,11 @@
         </li>
         <!-- プロフィール -->
         <li class="relative">
-          <%= image_tag current_user.avatar_url, id: "profile-toggle", class: "rounded-full shadow w-16 h-16 cursor-pointer" %>
+          <% if current_user.avatar.attached? %>
+            <%= image_tag url_for(current_user.avatar), id: "profile-toggle", class: "rounded-full shadow w-16 h-16 cursor-pointer" %>
+          <% else %>
+            <%= image_tag "/default_avatar.png", id: "profile-toggle", class: "rounded-full shadow w-16 h-16 cursor-pointer" %>
+          <% end %>
           <div id="profile-menu" class="hidden absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg z-50">
             <div class="px-4 py-2 text-gray-900 font-semibold"><%= current_user.decorate.full_name %></div>
             <div class="border-t border-gray-100 my-1"></div>

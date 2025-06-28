@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  mount_uploader :avatar, AvatarUploader
+  # mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar # ActiveStorageを設定
+
 
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :last_name, presence: true, length: { maximum: 255 }
