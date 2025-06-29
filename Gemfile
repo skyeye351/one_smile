@@ -55,5 +55,3 @@ gem "draper"
 
 gem "slim-rails"
 gem "html2slim"
-
-gem "cloudinary" # renderで画像保管

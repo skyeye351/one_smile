@@ -34,10 +34,10 @@ section.bg-gray-50.py-12
       - @latest_boards.each do |board|
         .bg-white.rounded-xl.shadow-lg.overflow-hidden.transition.transform.hover:-translate-y-1.hover:shadow-xl
           = link_to board_path(board), class: "block h-full" do
-            - if board.board_image.attached?
-              = image_tag url_for(board.board_image), class: "w-full h-48 object-cover"
+            - if board.board_image_url.present?
+              = image_tag board.board_image_url, class: "w-full h-48 object-cover", width: 400, height: 200
             - else
-              = image_tag "/board_placeholder.png", class: "w-full h-48 object-cover"
+              = image_tag "no_image.png", class: "w-full h-48 object-cover", width: 400, height: 200
 
             .p-6.flex.flex-col.h-full
               h3.text-xl.font-semibold.text-gray-900.mb-2 = board.title.truncate(30)
