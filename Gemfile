@@ -57,3 +57,5 @@ gem "slim-rails"
 gem "html2slim"
 
 gem "cloudinary" # renderで画像保管
+
+gem "kaminari" # ページネーション

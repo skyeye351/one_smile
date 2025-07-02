@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
     skip_before_action :require_login, only: %i[index show]
 
     def index
-        @boards = Board.includes(:user)
+        @boards = Board.order(created_at: :asc).page(params[:page]).per(9)
     end
 
     def new
