@@ -1,6 +1,6 @@
 name: バグ修正
 description: バグの報告はこちら
-title:
+title: "[bug]"
 labels: [bug]
 body:
   - type: textarea
