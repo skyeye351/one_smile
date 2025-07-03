@@ -1,0 +1,28 @@
+name: 機能追加
+description: 新しい機能の提案
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: content
+    attributes:
+      label: 内容
+      description: どんな機能を追加したか
+      placeholder: 例）ユーザープロフィールの編集機能
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 理由
+      description: なぜその機能が必要なのか
+      placeholder: 例）ユーザーが自分の情報を更新できるようにするため
+    validations:
+      required: true
+
+  - type: textarea
+    id: memo
+    attributes:
+      label: メモ（任意）
+      description: 参考リンクや補足があれば記載してください

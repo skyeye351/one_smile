@@ -1,0 +1,32 @@
+name: バグ修正
+description: バグの報告はこちら
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: textarea
+    id: content
+    attributes:
+      label: 内容
+      description: どんなバグが起きているか、簡単に書いてください
+      placeholder: 例）ログインボタンがクリックできない
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現方法
+      description: バグの再現手順を記載してください
+      placeholder: 例）
+        1. ログインページにアクセス
+        2. メールアドレスとパスワードを入力
+        3. ログインボタンをクリック
+        4. エラーが表示される
+    validations:
+      required: true
+
+  - type: textarea
+    id: memo
+    attributes:
+      label: メモ（任意）
+      description: エラーメッセージやスクリーンショットなど、補足があれば記載してください
