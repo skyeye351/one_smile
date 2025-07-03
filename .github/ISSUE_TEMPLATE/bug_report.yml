@@ -1,6 +1,6 @@
 name: バグ修正
 description: バグの報告はこちら
-title: "[Bug] "
+title:
 labels: [bug]
 body:
   - type: textarea
@@ -11,6 +11,13 @@ body:
       placeholder: 例）ログインボタンがクリックできない
     validations:
       required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: 実現したいこと
+      description: このバグ修正でどんな状態にしたいか、期待する挙動を記載してください
+      placeholder: 例）ログインボタンをクリックすると、正常にログインできるようにしたい
 
   - type: textarea
     id: steps
@@ -24,6 +31,13 @@ body:
         4. エラーが表示される
     validations:
       required: true
+
+  - type: textarea
+    id: fix_idea
+    attributes:
+      label: 修正方法（わかる範囲）
+      description: 修正方法や原因の見当がついていれば、記載してください
+      placeholder: 例）ボタンに `type="submit"` が抜けている可能性がある
 
   - type: textarea
     id: memo
