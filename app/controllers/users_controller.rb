@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, success: t("defaults.flash_message.created", item: User.model_name.human)
+      auto_login(@user)
+      redirect_to edit_profile_path, success: t("defaults.flash_message.created", item: User.model_name.human)
     else
       flash.now[:error] = t("defaults.flash_message.not_created", item: User.model_name.human)
       render :new, status: :unprocessable_entity

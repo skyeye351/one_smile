@@ -3,13 +3,12 @@
   <head>
     <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= csrf_meta_tags %> <!-- セキュリティ：「正当なユーザーの操作か」を検証 -->
+    <%= csp_meta_tag %> <!-- セキュリティ：悪意のあるスクリプトが実行されないように -->
 
     <%= yield :head %>
 
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
@@ -29,16 +28,5 @@
 
     <!-- フッター -->
     <%= render "shared/footer" %>
-
-    <div data-controller="tutorial-modal" data-tutorial-modal-target="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-      <div class="bg-white p-6 rounded shadow-lg max-w-md w-full text-center">
-        <h2 class="text-xl font-bold mb-4">ようこそ！</h2>
-        <p class="mb-4">このアプリでは、ペットの投稿や他ユーザーとの交流が楽しめます！</p>
-        <%= link_to '使い方を見る', welcome_index_path, class: 'text-blue-500 underline block mb-4' %>
-        <button data-action="click->tutorial-modal#close" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
-          閉じる
-        </button>
-      </div>
-    </div>
   </body>
 </html>
