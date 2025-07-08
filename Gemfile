@@ -60,4 +60,4 @@ gem "cloudinary" # renderで画像保管
 
 gem "kaminari" # ページネーション
 
-gem "ransack" #検索
+gem "ransack" # 検索
