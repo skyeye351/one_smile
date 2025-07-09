@@ -7,12 +7,28 @@
         .flex.flex-col.sm:flex-row.items-center.gap-4
           input[
             type="search"
-            placeholder="検索ワードを入力..."
+            placeholder="キーワード検索"
+            class="w-full flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          ]
+          input[
+            type="search"
+            placeholder="カテゴリ" # 犬種、フード、飼い方etc
+            class="w-full flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          ]
+          input[
+            type="search"
+            placeholder="サブカテゴリ" # 犬種→チワワ、フード→危険な食べ物etc
             class="w-full flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           ]
           input[
             type="submit"
             value="検索"
+            class="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition cursor-pointer"
+          ]
+          input[
+            type="submit"
+            value="リセット"
+            link_to board_path
             class="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition cursor-pointer"
           ]
 
