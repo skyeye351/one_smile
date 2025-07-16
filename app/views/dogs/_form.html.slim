@@ -1,0 +1,34 @@
+= form_with(model: dog) do |form|
+  - if dog.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(dog.errors.count, "error")} prohibited this dog from being saved:"
+      ul
+        - dog.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :user_id, style: "display: block"
+    = form.text_field :user_id
+
+  div
+    = form.label :name, style: "display: block"
+    = form.text_field :name
+
+  div
+    = form.label :breed, style: "display: block"
+    = form.text_field :breed
+
+  div
+    = form.label :age, style: "display: block"
+    = form.number_field :age
+
+  div
+    = form.label :place, style: "display: block"
+    = form.text_field :place
+
+  div
+    = form.label :profile_image, style: "display: block"
+    = form.text_field :profile_image
+
+  div
+    = form.submit

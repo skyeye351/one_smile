@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dogs
   root "welcome#index"
   resources :users, only: %i[new create]
   # ネストすることで関連するリソースの関係が明確になる。
