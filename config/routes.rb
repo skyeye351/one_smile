@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :dogs
   root "welcome#index"
   resources :users, only: %i[new create]
   # ネストすることで関連するリソースの関係が明確になる。
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit update destroy], shallow: true
   end
   resource :profile, only: %i[show edit update]
+  resources :dogs, only: %i[new]
 
   get "welcome/index"
   get "login", to: "user_sessions#new"
