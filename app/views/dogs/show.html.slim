@@ -1,10 +1,2 @@
-p style="color: green" = notice
-
-== render @dog
-
-div
-  => link_to "Edit this dog", edit_dog_path(@dog)
-  '|
-  =< link_to "Back to dogs", dogs_path
-
-  = button_to "Destroy this dog", @dog, method: :delete
+- if @dog.profile_image.attached?
+  = image_tag @dog.profile_image, class: "w-40 h-40 object-cover rounded-full"

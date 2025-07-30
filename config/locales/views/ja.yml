@@ -28,7 +28,8 @@ ja:
     logout: ログアウト
     index_board: 掲示板一覧
     create_board: 掲示板作成
-    profile: プロフィール
+    profile: ユーザープロフィール
+    dogs_profile: 犬のプロフィール
   profiles:
     show:
       title: プロフィール
