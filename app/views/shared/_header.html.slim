@@ -1,0 +1,44 @@
+header.bg-white.shadow
+  nav.container.mx-auto.flex.items-center.justify-between.px-4.py-3
+    / ロゴ
+    = link_to "/", class: "flex flex-col items-center justify-center text-center" do
+      span.text-xl.font-bold.text-gray-800 わんスマイル
+      span.text-sm.text-gray-500 ONE SMILE
+
+    / ハンバーガーメニュー
+    .block.md:hidden
+      button#nav-toggle.flex.items-center.px-3.py-2.border.rounded.text-gray-600.border-gray-400.hover:text-gray-800.hover:border-gray-600
+        svg.fill-current.h-4.w-4 viewBox="0 0 20 20"
+          path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"
+
+    / メニュー（PC用）
+    #nav-menu.hidden.md:flex.flex-col.md:flex-row.absolute.md:static.top-16.right-4.md:top-auto.md:right-auto.bg-white.md:bg-transparent.shadow.md:shadow-none.rounded.md:rounded-none.p-4.md:p-0.space-y-4.md:space-y-0.md:space-x-6.z-50
+      ul.flex.flex-col.md:flex-row.items-start.md:items-center.space-y-2.md:space-y-0.md:space-x-6.mt-4.md:mt-0
+        li
+          = link_to t("header.index_board"), boards_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
+        li
+          = link_to t("header.create_board"), new_board_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
+
+        / プロフィール
+        li.relative
+          - if current_user.avatar.attached?
+            = image_tag url_for(current_user.avatar), id: "profile-toggle", class: "rounded-full shadow w-16 h-16 cursor-pointer"
+          - else
+            = image_tag "/default_avatar.png", id: "profile-toggle", class: "rounded-full shadow w-16 h-16 cursor-pointer"
+
+          #profile-menu.hidden.absolute.right-0.mt-2.w-56.bg-white.border.border-gray-200.rounded.shadow-lg.z-50
+            .px-4.py-2.text-gray-900.font-semibold
+              = current_user.decorate.full_name
+
+            .border-t.border-gray-100.my-1
+
+            = link_to t("header.profile"), profile_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
+
+            / 犬プロフィールの分岐表示
+            - if current_user.dogs.any?
+              - current_user.dogs.each do |dog|
+                = link_to "#{dog.name}のプロフィール", dog_path(dog), class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            - else
+              = link_to "犬プロフィールを登録する", new_dog_path, class: "block px-4 py-2 text-blue-600 hover:bg-gray-100"
+
+            = link_to t("header.logout"), logout_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100", data: { turbo_method: :delete }

@@ -14,10 +14,9 @@ class User < ApplicationRecord
     validates :password_confirmation, presence: true
   end
 
-  # has_many :boardsは、ユーザーが複数のBoardレコードを持つことを示しています。
-  # dependent: :destroyは、ユーザーが削除されたとき、関連するBoardレコードも一緒に削除される
-  has_many :boards, dependent: :destroy
+  has_many :boards, dependent: :destroy # dependent: :destroyは、ユーザーが削除されたとき、関連するBoardレコードも一緒に削除される
   has_many :comments, dependent: :destroy
+  has_many :dogs, dependent: :destroy
 
   # このメソッドは、ユーザーオブジェクトと任意のオブジェクトを比較し、そのオブジェクトの user_idがユーザーオブジェクトのidと一致するかどうかを確認します。
   def own?(object)

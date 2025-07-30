@@ -1,0 +1,22 @@
+= form_with model: dog, local: true do |f|
+  .mb-4
+    = f.label :name, class: "block text-sm font-medium"
+    = f.text_field :name, class: "mt-1 block w-full"
+
+  .mb-4
+    = f.label :breed, class: "block text-sm font-medium"
+    = f.text_field :breed, class: "mt-1 block w-full"
+
+  .mb-4
+    = f.label :age, class: "block text-sm font-medium"
+    = f.number_field :age, class: "mt-1 block w-full"
+
+  .mb-4
+    = f.label :place, class: "block text-sm font-medium"
+    = f.text_field :place, class: "mt-1 block w-full"
+
+  .mb-4
+    = f.label :profile_image, class: "block text-sm font-medium"
+    = f.file_field :profile_image, class: "mt-1 block w-full"
+
+  = f.submit "保存", class: "bg-blue-500 text-white px-4 py-2 rounded"
