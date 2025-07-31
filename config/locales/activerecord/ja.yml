@@ -1,3 +1,5 @@
+# 使い分け：モデルに関連する翻訳を定義する
+# 例：モデル名、属性名など
 ja:
   activerecord:
     models:
@@ -19,3 +21,9 @@ ja:
         board_image: サムネイル
       comment:
         body: コメント
+      dog:
+        name: 犬の名前
+        breed: 犬種
+        age: 年齢
+        place: よく行く場所
+        profile_image: プロフィール画像
