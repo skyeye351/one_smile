@@ -3,10 +3,6 @@ class BoardsController < ApplicationController
 
     def index
         @boards = Board.order(created_at: :desc).page(params[:page]).per(9)
-
-      # @search = @board.items.ransack(params[:q]) # params[:q]には検索フォームで指定した検索条件が入る
-      # @search.sorts = "created_at DESC" if @search.sorts.empty?
-      # @items = @search.result
     end
 
     def new

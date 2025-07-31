@@ -1,3 +1,5 @@
+# 使い分け：ビューやコントローラで表示するテキストを翻訳を定義する
+# 例：ボタンのラベル、ヘッダーのタイトルなど
 ja:
   helpers:
     submit:
@@ -60,6 +62,16 @@ ja:
       title: 掲示板一覧
     edit:
       title: 掲示板編集
+  dogs:
+    new:
+      title: 犬のプロフィール
+    show:
+      title: 犬プロフィール詳細
+    index:
+      title: 犬プロフィール一覧
+    edit:
+      title: 犬プロフィール編集
+
   views:
     pagination:
       first: "&laquo; 最初"

@@ -33,12 +33,5 @@ header.bg-white.shadow
             .border-t.border-gray-100.my-1
 
             = link_to t("header.profile"), profile_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
-
-            / 犬プロフィールの分岐表示
-            - if current_user.dogs.any?
-              - current_user.dogs.each do |dog|
-                = link_to "#{dog.name}のプロフィール", dog_path(dog), class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
-            - else
-              = link_to "犬プロフィールを登録する", new_dog_path, class: "block px-4 py-2 text-blue-600 hover:bg-gray-100"
-
+            = link_to t("header.dogs_profile"), new_dog_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100"
             = link_to t("header.logout"), logout_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-100", data: { turbo_method: :delete }
