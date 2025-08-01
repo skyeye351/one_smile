@@ -3,7 +3,7 @@
     - if board.board_image.attached?
       = image_tag url_for(board.board_image), class: "w-full h-48 object-cover", width: "300", height: "200"
     - else
-      = image_tag "/board_placeholder.png", class: "w-full h-48 object-cover", width: "300", height: "200"
+      = image_tag "/no_image.png", class: "w-full h-48 object-cover", width: "300", height: "200"
 
     .p-4.flex.flex-col.flex-grow
       .flex.flex-col.gap-2.mb-2

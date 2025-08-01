@@ -1,11 +1,19 @@
-p style="color: green" = notice
+- content_for(:title, t('.title'))
+div.min-h-screen.bg-gradient-to-br.from-yellow-50.to-pink-100.px-4.py-12
+  .max-w-6xl.mx-auto
+    h1.text-3xl.md:text-4xl.font-bold.text-gray-800.mb-8.text-center 犬プロフィール一覧
 
-h1 Dogs
+    .grid.grid-cols-1.sm:grid-cols-2.md:grid-cols-3.gap-6
+      - @dogs.each do |dog|
+        .bg-white.rounded-xl.shadow-md.overflow-hidden.p-4.flex.flex-col.items-center
+          - if dog.profile_image.attached?
+            = image_tag dog.profile_image, class: "w-32 h-32 object-cover rounded-full shadow mb-4"
+          - else
+            = image_tag "/no_image.png", class: "w-32 h-32 object-cover rounded-full shadow mb-4"
 
-#dogs
-  - @dogs.each do |dog|
-    == render dog
-    p
-      = link_to "Show this dog", dog
+          h2.text-lg.font-semibold.text-gray-800.mb-1 = dog.name
+          p.text-sm.text-gray-600 犬種：#{dog.breed}
+          p.text-sm.text-gray-600 年齢：#{dog.age}歳
+          p.text-sm.text-gray-600 出身地：#{dog.place}
 
-= link_to "New dog", new_dog_path
+          = link_to "詳細", dog_path(dog), class: "mt-4 inline-block bg-pink-500 hover:bg-pink-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-300"
