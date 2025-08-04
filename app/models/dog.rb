@@ -18,7 +18,7 @@ class Dog < ApplicationRecord
     end
 
     # 画像形式チェック
-    acceptable_types = ["image/jpeg", "image/png"]
+    acceptable_types = [ "image/jpeg", "image/png" ]
     unless acceptable_types.include?(profile_image.content_type)
       errors.add(:profile_image, "はJPEGまたはPNG形式でなければなりません")
     end
