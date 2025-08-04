@@ -1,23 +1,30 @@
 = form_with model: dog, local: true, html: { data: { controller: "image-preview" } } do |f|
+  = render "shared/error_messages", object: f.object
 
   = f.label :name, class: "block text-gray-700 font-semibold mb-2"
   = f.text_field :name, class: "mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:ring-blue-400 focus:border-blue-400"
 
-
   = f.label :breed, class: "block text-gray-700 font-semibold mb-2"
   = f.text_field :breed, class: "mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:ring-blue-400 focus:border-blue-400"
-
 
   = f.label :age, class: "block text-gray-700 font-semibold mb-2"
   = f.number_field :age, class: "mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:ring-blue-400 focus:border-blue-400"
 
-
   = f.label :place, class: "block text-gray-700 font-semibold mb-2"
   = f.text_field :place, class: "mt-1 block w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:ring-blue-400 focus:border-blue-400"
 
-
   = f.label :profile_image, class: "block text-gray-700 font-semibold mb-2"
-  = f.file_field :profile_image, data: { action: "image-preview#preview", image_preview_target: "input" }
-  img.hidden.mt-4.max-w-xs.rounded-lg.shadow-lg data-image-preview-target="preview"
+  = f.file_field :profile_image,
+    data: { action: "image-preview#preview", image_preview_target: "input" },
+    class: "mb-4"
+
+  / アフター画像
+  img.hidden data-image-preview-target="preview" class="mx-auto mt-4 w-32 h-32 object-cover rounded shadow-lg transition duration-200 ease-in-out"
+
+  / ビフォー画像
+  - if @dog.profile_image.attached?
+    = image_tag url_for(@dog.profile_image),
+      data: { image_preview_target: "before" },
+      class: "mx-auto mt-4 w-32 h-32 object-cover rounded shadow-lg transition duration-200 ease-in-out"
 
   = f.submit nil, class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-300"

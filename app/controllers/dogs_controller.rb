@@ -18,9 +18,9 @@ class DogsController < ApplicationController
   def create
     @dog = current_user.dogs.new(dog_params)
     if @dog.save
-      redirect_to @dog, success: t("defaults.flash_message.created")
+      redirect_to @dog, success: t("defaults.flash_message.created", item: Dog.model_name.human)
     else
-      flash.now[:error] = t("defaults.flash_message.not_created")
+      flash.now[:error] = t("defaults.flash_message.not_created", item: Dog.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,11 +28,9 @@ class DogsController < ApplicationController
   def update
     respond_to do |format|
       if @dog.update(dog_params)
-        format.html { redirect_to @dog, notice: "Dog was successfully updated." }
-        format.json { render :show, status: :ok, location: @dog }
+        redirect_to @dog, success: t("defaults.flash_message.updated", item: Dog.model_name.human)
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @dog.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
     end
   end
@@ -41,8 +39,7 @@ class DogsController < ApplicationController
     @dog.destroy!
 
     respond_to do |format|
-      format.html { redirect_to dogs_path, status: :see_other, notice: "Dog was successfully destroyed." }
-      format.json { head :no_content }
+      redirect_to dogs_path, status: :see_other, success: t("defaults.flash_message.deleted", item: Dog.model_name.human)
     end
   end
 
