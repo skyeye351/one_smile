@@ -1,2 +1,29 @@
-- if @dog.profile_image.attached?
-  = image_tag @dog.profile_image, class: "w-40 h-40 object-cover rounded-full"
+- content_for(:title, t('.title'))
+div.min-h-screen.bg-gradient-to-br.from-yellow-50.to-pink-100.flex.items-center.justify-center.px-4.py-12
+  .bg-white.shadow-2xl.rounded-2xl.p-8.max-w-2xl.w-full.animate-fade-in-up
+    h1.text-3xl.md:text-4xl.font-bold.text-gray-800.mb-8.text-center
+      = @dog.name
+    .flex.flex-col.md:flex-row.items-center.md:items-start.gap-6
+      - if @dog.profile_image.attached?
+        = image_tag @dog.profile_image, class: "w-48 h-48 object-cover rounded-full shadow"
+      - else
+        = image_tag "/no_image.png", class: "w-48 h-48 object-cover rounded-full shadow"
+
+      .flex-1.space-y-4
+        .text-lg.text-gray-700
+          span.font-semibold 犬種：
+          = @dog.breed
+
+        .text-lg.text-gray-700
+          span.font-semibold 年齢：
+          = @dog.age
+          | 歳
+
+        .text-lg.text-gray-700
+          span.font-semibold 出身地：
+          = @dog.place
+
+    .mt-8.flex.justify-center.gap-4
+      = link_to "編集", edit_dog_path(@dog), class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg shadow transition duration-300"
+      = link_to "一覧に戻る", dogs_path, class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-5 py-2 rounded-lg shadow transition duration-300"
+      = link_to "削除", dogs_path, class: "inline-flex items-center bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300"
