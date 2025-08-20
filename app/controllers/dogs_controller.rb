@@ -13,6 +13,7 @@ class DogsController < ApplicationController
   end
 
   def create
+    @dog = current_user.dogs.new(dog_params)
     if @dog.save
       redirect_to @dog, success: t("defaults.flash_message.created", item: Dog.model_name.human)
     else
