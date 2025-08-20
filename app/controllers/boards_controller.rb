@@ -40,9 +40,9 @@ class BoardsController < ApplicationController
     end
 
     def destroy
-    board = current_user.boards.find(params[:id])
-    board.destroy!
-    redirect_to boards_path, success: t("defaults.flash_message.deleted", item: Board.model_name.human), status: :see_other
+        board = current_user.boards.find(params[:id])
+        board.destroy!
+        redirect_to boards_path, success: t("defaults.flash_message.deleted", item: Board.model_name.human), status: :see_other
     end
 
     private
