@@ -12,11 +12,7 @@ class DogsController < ApplicationController
     @dog = Dog.new
   end
 
-  def edit
-  end
-
   def create
-    @dog = current_user.dogs.new(dog_params)
     if @dog.save
       redirect_to @dog, success: t("defaults.flash_message.created", item: Dog.model_name.human)
     else
@@ -25,22 +21,21 @@ class DogsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    respond_to do |format|
-      if @dog.update(dog_params)
-        redirect_to @dog, success: t("defaults.flash_message.updated", item: Dog.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @dog.update(dog_params)
+      redirect_to @dog, success: t("defaults.flash_message.updated", item: Dog.model_name.human)
+    else
+      flash.now[:error] = t("defaults.flash_message.not_updated", item: Dog.model_name.human)
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @dog.destroy!
-
-    respond_to do |format|
-      redirect_to dogs_path, status: :see_other, success: t("defaults.flash_message.deleted", item: Dog.model_name.human)
-    end
+    @dog.destroy
+    redirect_to dogs_path, success: t("defaults.flash_message.deleted", item: Dog.model_name.human), status: :see_other
   end
 
   private
